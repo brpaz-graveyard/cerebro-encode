@@ -2,13 +2,15 @@
 
 > Cerebro plugin for encoding strings into multiple formats (base64, html, url, etc)
 
-![](screenshot.png)
+![](demo.gif)
 
 ## Usage
 
+ Type ```encode``` followed by your string.
+
 ## Features
 
-* 
+* Encodes strings into base64, HTML and URL.
 
 ## Related
 
