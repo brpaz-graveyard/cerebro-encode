@@ -1,14 +1,32 @@
 'use strict';
 
-const icon = require('./icon.png');
+const PLUGIN_REGEX = /encode\s(.*)/;
+const PLUGIN_KEYWORD = 'encode';
+const icon = require('../assets/icon.png');
 const encoder = require('./encoder');
 
 const plugin = ({ term, display, actions }) => {
-  const match = term.match(/encode\s(.*)/);
+
+  const match = term.match(PLUGIN_REGEX);
+
   if (match) {
-    const input = match[1];
-    if (input) {
-      let results = encoder.getEncodedValues(input, actions);
+
+    if (match[1]) {
+
+      let encodedValues = encoder.encode(match[1]);
+      console.log(encodedValues);
+      let results = [];
+      encodedValues.forEach((item) => {
+        results.push({
+          title: item.title,
+          icon,
+          clipboard: item.value,
+          onSelect: () => {
+            actions.copyToClipboard(item.value);
+          }
+        });
+      });
+
       display(results);
     }
   }
@@ -16,7 +34,7 @@ const plugin = ({ term, display, actions }) => {
 
 module.exports = {
   fn: plugin,
-  name: 'Encode Strings',
-  keyword: 'encode',
+  name: 'Encoder',
+  keyword: PLUGIN_KEYWORD,
   icon
 };

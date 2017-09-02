@@ -1,6 +1,6 @@
 # Cerebro-encode
 
-> Cerebro plugin for encoding strings into multiple formats (base64, html, url, etc)
+> Cerebro plugin for encoding strings into multiple formats (base64, html, url ...)
 
 ![](demo.gif)
 
